@@ -1,0 +1,32 @@
+{
+  "include": [
+    "src",
+    "./node_modules/redux-persist/types",
+    "react-app-env.d.ts",
+    "src/Pages/Writeplan/1where/InputCards/.URLCard.tsx",
+    "src/Components/ModalBlurBg/.WithModal.tsx"
+  ],
+  "extends": "./tsconfig.paths.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "removeComments": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  }
+}

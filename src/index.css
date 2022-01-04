@@ -1,0 +1,30 @@
+/* ./src/index.css */
+
+@tailwind base;
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components {
+    .rootDiv {
+        @apply grid grid-cols-1;
+    }
+    .grayBtn {
+        @apply rounded-lg transition duration-100 bg-gray-300 hover-hover:hover:bg-gray-400 active:bg-gray-500 hover-hover:active:bg-gray-500 px-4 py-2 w-28;
+    }
+    /* main bg-color is bg-gray-200 -> reasons for active, hover*/
+    .whiteHover {
+        @apply transition duration-100 bg-white shadow-lg hover-hover:hover:bg-gray-300 hover-hover:active:bg-gray-400 active:bg-gray-400;
+    }
+    .mainBtn {
+        @apply bg-blue-400 transition duration-300;
+    }
+    .mainInput {
+        @apply text-gray-700 border-gray-300 focus:ring focus:ring-blue-400 focus:ring-offset-2 focus:border-gray-300;
+    }
+}
