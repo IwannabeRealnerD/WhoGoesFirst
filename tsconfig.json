@@ -1,10 +1,7 @@
 {
   "include": [
     "src",
-    "./node_modules/redux-persist/types",
-    "react-app-env.d.ts",
-    "src/Pages/Writeplan/1where/InputCards/.URLCard.tsx",
-    "src/Components/ModalBlurBg/.WithModal.tsx"
+    "craco.config.js"
   ],
   "extends": "./tsconfig.paths.json",
   "compilerOptions": {
