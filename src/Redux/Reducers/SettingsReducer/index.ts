@@ -4,14 +4,12 @@ interface SettingInfo {
     isAnimationOn: boolean;
     isCatchphraseOn: boolean;
     isExplainOn: boolean;
-    isExplainOff: boolean;
 }
 
 const initialState: SettingInfo = {
     isAnimationOn: false,
-    isCatchphraseOn: false,
-    isExplainOn: false,
-    isExplainOff: false,
+    isCatchphraseOn: true,
+    isExplainOn: true,
 };
 
 const SettingReducer = (
@@ -30,7 +28,7 @@ const SettingReducer = (
         case ActionType.EXPLAIN_ON:
             return { ...state, isExplainOn: true };
         case ActionType.EXPLAIN_OFF:
-            return { ...state, isExplainOff: true };
+            return { ...state, isExplainOn: false };
         default:
             return state;
     }

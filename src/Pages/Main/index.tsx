@@ -11,10 +11,13 @@ export const Main: FunctionComponent = () => {
     const isCatchphraseOn = useAppSelector(
         (state) => state.SettingReducer.isCatchphraseOn
     );
+    const isExplainOn = useAppSelector(
+        (state) => state.SettingReducer.isExplainOn
+    );
     return (
         <motion.div {...FadeInOutVariants}>
             {isCatchphraseOn && <CatchPhrase />}
-            {/* <ExplainModal /> */}
+            {isExplainOn && <ExplainModal />}
             <Link to="/writeplan/1where">
                 <button
                     type="button"
