@@ -1,5 +1,7 @@
+import { ResetButton } from "@Components/Pages/WritePlan/ResetButton";
 import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import { writeUrl } from "@Redux/Reducers/PlanReducer/Actions";
+import { AnimatePresence } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -17,7 +19,7 @@ export const URLCard: FunctionComponent = () => {
     const [buttonText, setButtonText] = useState("입력");
 
     const defaultValue = urlRedux ?? "";
-    const { register, handleSubmit, formState, setFocus } = useForm({
+    const { register, handleSubmit, formState, setFocus, reset } = useForm({
         defaultValues: {
             url: defaultValue,
         },
@@ -32,6 +34,12 @@ export const URLCard: FunctionComponent = () => {
         }
         setIsReset(true);
         dispatch(writeUrl(url));
+    };
+
+    const resteFunc = (): void => {
+        reset();
+        setIsReset(false);
+        dispatch(writeUrl(null));
     };
 
     useEffect(() => {
@@ -51,8 +59,9 @@ export const URLCard: FunctionComponent = () => {
             return;
         }
         if (urlRedux !== null) {
-            setButtonText("재설정");
-            setButtonStatus(false);
+            setButtonText("입력완료");
+            setIsReset(true);
+            setButtonStatus(true);
             setIsReset(true);
             return;
         }
@@ -71,7 +80,10 @@ export const URLCard: FunctionComponent = () => {
                 <span className="text-gray-500"> (필수 아님)</span>
             </div>
             <form onSubmit={handleSubmit(submitUrlAddr)}>
-                <div className="relative rounded-lg bg-white overflow-hidden pt-5 pb-11 shadow-lg">
+                <div className="relative rounded-lg bg-white pt-5 pb-11 shadow-lg">
+                    <AnimatePresence exitBeforeEnter>
+                        {urlRedux && <ResetButton resetFunc={resteFunc} />}
+                    </AnimatePresence>
                     <div className="px-4">
                         <input
                             {...register("url", {
@@ -91,6 +103,7 @@ export const URLCard: FunctionComponent = () => {
                                 ? "bg-blue-400 hover-hover:hover:bg-blue-300 active:bg-blue-500"
                                 : "bg-red-400 hover-hover:hover:bg-red-300 active:bg-red-500"
                         }`}
+                        disabled={isReset}
                     >
                         {buttonText}
                     </button>

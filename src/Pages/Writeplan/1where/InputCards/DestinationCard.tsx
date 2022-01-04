@@ -1,9 +1,3 @@
-import { MenuIndicator } from "@Components/Pages";
-import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
-import {
-    writeDestination,
-    writeUrl,
-} from "@Redux/Reducers/PlanReducer/Actions";
 import {
     Dispatch,
     FunctionComponent,
@@ -12,6 +6,15 @@ import {
     useState,
 } from "react";
 import { useForm } from "react-hook-form";
+
+import { MenuIndicator } from "@Components/Pages";
+import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
+import {
+    writeDestination,
+    writeUrl,
+} from "@Redux/Reducers/PlanReducer/Actions";
+import { ResetButton } from "@Components/Pages/WritePlan/ResetButton";
+import { AnimatePresence } from "framer-motion";
 
 interface DestinationCard {
     setIsDestination: Dispatch<SetStateAction<boolean>>;
@@ -31,26 +34,25 @@ export const DestinationCard: FunctionComponent<DestinationCard> = ({
     );
 
     const defaultValue = destinationRedux ?? "";
-    const { register, handleSubmit, formState, setFocus } = useForm({
+    const { register, handleSubmit, formState, setFocus, reset } = useForm({
         defaultValues: {
             destination: defaultValue,
         },
     });
-
     const [isReset, setIsReset] = useState(false);
     const [buttonStatus, setButtonStatus] = useState(true);
     const [buttonText, setButtonText] = useState(() => "입력");
 
     const submitDestination = ({ destination }: SubmitWhereInterface): void => {
-        if (isReset) {
-            setIsReset(false);
-            dispatch(writeDestination(null));
-            dispatch(writeUrl(null));
-            setFocus("destination");
-            return;
-        }
         setIsReset(true);
         dispatch(writeDestination(destination));
+    };
+
+    const resteFunc = (): void => {
+        reset();
+        setIsReset(false);
+        dispatch(writeDestination(null));
+        dispatch(writeUrl(null));
     };
 
     useEffect(() => {
@@ -70,10 +72,10 @@ export const DestinationCard: FunctionComponent<DestinationCard> = ({
             return;
         }
         if (destinationRedux !== null) {
-            setButtonText("재설정");
+            setButtonText("입력완료");
             setIsReset(true);
             setIsDestination(true);
-            setButtonStatus(false);
+            setButtonStatus(true);
             return;
         }
         setButtonText("입력");
@@ -87,7 +89,12 @@ export const DestinationCard: FunctionComponent<DestinationCard> = ({
         <>
             <MenuIndicator menuName="도착지" />
             <form onSubmit={handleSubmit(submitDestination)}>
-                <div className=" relative rounded-lg bg-white overflow-hidden pt-5 pb-11 shadow-lg">
+                <div className=" relative rounded-lg bg-white pt-5 pb-11 shadow-lg">
+                    <AnimatePresence exitBeforeEnter>
+                        {destinationRedux && (
+                            <ResetButton resetFunc={resteFunc} />
+                        )}
+                    </AnimatePresence>
                     <div className="px-4">
                         <input
                             {...register("destination", {
@@ -107,6 +114,7 @@ export const DestinationCard: FunctionComponent<DestinationCard> = ({
                                 ? "bg-blue-400 hover-hover:hover:bg-blue-300 active:bg-blue-500"
                                 : "bg-red-400 hover-hover:hover:bg-red-300 active:bg-red-500"
                         }`}
+                        disabled={isReset}
                     >
                         {buttonText}
                     </button>

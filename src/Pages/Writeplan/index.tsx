@@ -9,7 +9,6 @@ import { Who } from "./3who";
 export const WritePlan: FunctionComponent = () => {
     const { url } = useRouteMatch();
     const location = useLocation();
-    console.log("hi");
     return (
         <>
             {/* sdifowjoief */}
