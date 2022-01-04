@@ -33,7 +33,8 @@
     },
     "scripts": {
         "start": "craco start",
-        "build": "craco build",
+        "build": "craco build && cp ./build/index.html ./build/404.html",
+        "ghpages": "gh-pages -d build",
         "test": "craco test",
         "eject": "react-scripts eject"
     },
