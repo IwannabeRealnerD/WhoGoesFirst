@@ -1,6 +1,8 @@
 import { useState, FunctionComponent, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useAppSelector } from "@Redux/Hooks";
+
+import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
+import { deleteRiderInfo } from "@Redux/Reducers/PlanReducer/Actions";
 import { SubmitWhoInterface } from "../Interface";
 import { NameInput } from "./NameInput";
 import { SelectBox } from "./SelectBox";
@@ -16,7 +18,10 @@ export const WriteInfo: FunctionComponent<WriteInfoInterface> = ({
     riderIndex,
     submitFunc,
 }) => {
-    const riderInfoArr = useAppSelector((state) => state.PlanReducer.userInfo);
+    const dispatch = useAppDispatch();
+    const riderInfoArr = useAppSelector(
+        (state) => state.PlanReducer.riderInfoArr
+    );
 
     const { register, handleSubmit, formState, reset, setFocus } = useForm();
     const [errorText, setErrorText] = useState("");
@@ -103,10 +108,16 @@ export const WriteInfo: FunctionComponent<WriteInfoInterface> = ({
                         </button>
                         <button
                             type="button"
-                            onClick={() => reset()}
+                            onClick={() => {
+                                if (riderIndex === undefined) {
+                                    reset();
+                                    return;
+                                }
+                                dispatch(deleteRiderInfo(riderIndex));
+                            }}
                             className="transition duration-300 h-8 bg-red-400 hover-hover:hover:bg-red-300 rounded-none w-1/2 rounded-br-lg"
                         >
-                            초기화
+                            {riderIndex === undefined ? "초기화" : "삭제"}
                         </button>
                     </div>
                 </div>

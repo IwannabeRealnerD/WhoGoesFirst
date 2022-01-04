@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { useCopy } from "@Components/CustomHook";
 import { Toast } from "@Components/Pages/Result/Toast";
 import { shareLinkCreator } from "@Components/Functions";
+import { useRiderInfo } from "@Components/CustomHook/useRinderInfo";
 import { useAppSelector } from "@Redux/Hooks";
 import { NoPlan } from "./NoPlan";
 import { WhenResult } from "./WhenResult";
@@ -16,7 +17,7 @@ export const ResultCards: FunctionComponent = () => {
     const urlRedux = useAppSelector((state) => state.PlanReducer.url);
     const startDate = useAppSelector((state) => state.PlanReducer.startDate);
     const endDate = useAppSelector((state) => state.PlanReducer.endDate);
-    const riderInfoArr = useAppSelector((state) => state.PlanReducer.userInfo);
+    const riderInfoArr = useRiderInfo();
 
     const { isCopied, isCopyAvailable, isMessageOn, copyToClipboard } =
         useCopy();

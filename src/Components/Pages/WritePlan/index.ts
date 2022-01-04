@@ -1,2 +1,2 @@
 export { NavButton } from "./NavButton";
-export { Footer } from "./Footer";
+export { ResetButton } from "./ResetButton";

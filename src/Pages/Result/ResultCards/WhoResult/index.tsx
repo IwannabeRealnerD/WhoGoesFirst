@@ -24,7 +24,7 @@ export const WhoResult: FunctionComponent<WhoResultInterface> = ({
         <CardWrapper>
             <p className="text-blue-700">인원</p>
             <p className="text-xl text-gray-700 font-bold text-center mb-12">
-                {userInfoArr.length - 1}명
+                {userInfoArr.length}명
             </p>
             <button
                 type="button"

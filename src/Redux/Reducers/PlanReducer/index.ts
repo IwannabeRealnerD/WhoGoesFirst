@@ -5,13 +5,13 @@ interface PlanInfo {
     destination: string | null;
     startDate: Date | null;
     endDate: Date | null;
-    userInfo: { name: string; tel: number; bikeClass: number[] }[];
+    riderInfoArr: { name: string; tel: number; bikeClass: number[] }[];
 }
 
 const initialState: PlanInfo = {
     url: null,
     destination: null,
-    userInfo: [{ name: "", tel: 0, bikeClass: [0, 0] }],
+    riderInfoArr: [{ name: "", tel: 0, bikeClass: [0, 0] }],
     startDate: null,
     endDate: null,
 };
@@ -21,11 +21,11 @@ const PlanReducer = (
     action: PlanAction
 ): PlanInfo => {
     switch (action.type) {
-        case ActionType.WRITE_URL: {
+        case ActionType.SET_URL: {
             return { ...state, url: action.payload };
         }
 
-        case ActionType.WRITE_DESTINATION: {
+        case ActionType.SET_DESTINATION: {
             return { ...state, destination: action.payload };
         }
 
@@ -37,26 +37,33 @@ const PlanReducer = (
             return { ...state, endDate: action.payload };
         }
 
-        case ActionType.WRITE_RIDER_INFO: {
-            const newArray = state.userInfo.slice();
+        case ActionType.SET_RIDER_INFO: {
+            const newArray = state.riderInfoArr.slice();
             newArray.push(action.payload);
-            return { ...state, userInfo: newArray };
+            return { ...state, riderInfoArr: newArray };
+        }
+
+        case ActionType.DELETE_RIDER_INFO: {
+            const result = state.riderInfoArr.filter(
+                (element, index) => index !== action.payload
+            );
+            return { ...state, riderInfoArr: result };
         }
 
         case ActionType.EDIT_RIDER_INFO: {
-            const result = state.userInfo.map((element, index) => {
+            const result = state.riderInfoArr.map((element, index) => {
                 if (index !== action.riderIndex) {
                     return element;
                 }
                 return action.payload;
             });
-            return { ...state, userInfo: result };
+            return { ...state, riderInfoArr: result };
         }
 
         case ActionType.RESET_RIDER_INFO: {
             return {
                 ...state,
-                userInfo: [{ name: "", tel: 0, bikeClass: [0, 0] }],
+                riderInfoArr: [{ name: "", tel: 0, bikeClass: [0, 0] }],
             };
         }
         default:

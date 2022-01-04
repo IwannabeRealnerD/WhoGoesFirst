@@ -1,28 +1,35 @@
 export enum ActionType {
-    WRITE_URL = "WRITE_URL",
-    WRITE_DESTINATION = "WRITE_DESTINATION",
-    WRITE_RIDER_INFO = "WRITE_RIDER_INFO",
+    SET_URL = "SET_URL",
+    SET_DESTINATION = "SET_DESTINATION",
+    SET_RIDER_INFO = "SET_RIDER_INFO",
+    DELETE_RIDER_INFO = "DELETE_RIDER_INFO",
     EDIT_RIDER_INFO = "EDIT_RIDER_INFO",
     RESET_RIDER_INFO = "RESET_RIDER_INFO",
     SET_START_DATE = "SET_START_DATE",
     SET_END_DATE = "SET_END_DATE",
 }
 
-interface URL {
-    type: ActionType.WRITE_URL;
+interface SetURL {
+    type: ActionType.SET_URL;
     payload: string | null;
 }
-interface Destination {
-    type: ActionType.WRITE_DESTINATION;
+interface SetDestination {
+    type: ActionType.SET_DESTINATION;
     payload: string | null;
-}
-interface RiderInfo {
-    type: ActionType.WRITE_RIDER_INFO;
-    payload: { name: string; tel: number; bikeClass: number[] };
 }
 interface SetDateInfo {
     type: ActionType.SET_START_DATE | ActionType.SET_END_DATE;
     payload: Date | null;
+}
+
+interface SetRiderInfo {
+    type: ActionType.SET_RIDER_INFO;
+    payload: { name: string; tel: number; bikeClass: number[] };
+}
+
+interface DeleteRiderInfo {
+    type: ActionType.DELETE_RIDER_INFO;
+    payload: number;
 }
 
 interface ResetRiderInfo {
@@ -36,20 +43,23 @@ interface EditRiderInfo {
 }
 
 export type PlanAction =
-    | URL
-    | Destination
-    | RiderInfo
+    | SetURL
+    | SetDestination
+    | SetRiderInfo
+    | DeleteRiderInfo
     | EditRiderInfo
     | ResetRiderInfo
     | SetDateInfo;
 
-export const writeUrl = (url: string | null): URL => ({
-    type: ActionType.WRITE_URL,
+export const writeUrl = (url: string | null): SetURL => ({
+    type: ActionType.SET_URL,
     payload: url,
 });
 
-export const writeDestination = (destination: string | null): Destination => {
-    return { type: ActionType.WRITE_DESTINATION, payload: destination };
+export const writeDestination = (
+    destination: string | null
+): SetDestination => {
+    return { type: ActionType.SET_DESTINATION, payload: destination };
 };
 
 export const writeStartDate = (startDate: Date | null): SetDateInfo => {
@@ -64,10 +74,17 @@ export const writeRiderInfo = (
     name: string,
     tel: number,
     bikeClass: number[]
-): RiderInfo => {
+): SetRiderInfo => {
     return {
-        type: ActionType.WRITE_RIDER_INFO,
+        type: ActionType.SET_RIDER_INFO,
         payload: { name, tel, bikeClass },
+    };
+};
+
+export const deleteRiderInfo = (riderIndex: number): DeleteRiderInfo => {
+    return {
+        type: ActionType.DELETE_RIDER_INFO,
+        payload: riderIndex,
     };
 };
 
