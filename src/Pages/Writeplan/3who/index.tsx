@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
+import { useAppDispatch } from "@Redux/Hooks";
 import { slideVariants } from "@Components/MotionVariants";
 import { writeRiderInfo } from "@Redux/Reducers/PlanReducer/Actions";
 import { NavButton } from "@Components/Pages/WritePlan";
 import { MenuIndicator } from "@Components/Pages";
+import { useRiderInfo } from "@Components/CustomHook/useRinderInfo";
 import { SubmitWhoInterface } from "./Interface";
 import { WriteInfo } from "./WriteInfo";
 import { InfoCard } from "./InfoCard";
@@ -16,9 +17,7 @@ export const Who: FunctionComponent = () => {
     const history = useHistory();
 
     const [isBack, setIsBack] = useState<boolean | null>(null);
-    const riderInfoArr = useAppSelector((state) => state.PlanReducer.userInfo);
-
-    const Arr = riderInfoArr.slice(1, riderInfoArr.length);
+    const riderInfoArr = useRiderInfo();
 
     const submitRiderInfo = ({
         name,
@@ -60,7 +59,7 @@ export const Who: FunctionComponent = () => {
             <div className="mb-5">
                 <WriteInfo submitFunc={submitRiderInfo} />
             </div>
-            {Arr.map((riderInfo, index) => {
+            {riderInfoArr.map((riderInfo, index) => {
                 const infoCardVal = `${index}-${riderInfo.name}`;
                 return (
                     <InfoCard

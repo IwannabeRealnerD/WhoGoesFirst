@@ -1,11 +1,10 @@
 import { Dispatch, FunctionComponent, SetStateAction } from "react";
 import { createPortal } from "react-dom";
-import { ModalBlurBg } from "@Components/ModalBlurBg";
-import { useAppSelector } from "@Redux/Hooks";
-import { InfoCard } from "@Pages/Writeplan/3who/InfoCard";
 import { motion } from "framer-motion";
+import { ModalBlurBg } from "@Components/ModalBlurBg";
 import { slideBackAnimation } from "@Components/MotionVariants/SlideVariants";
 import { arrToBikeClass } from "@Components/Functions";
+import { useRiderInfo } from "@Components/CustomHook/useRinderInfo";
 
 interface RiderInfoModalInterface {
     setIsRiderModal: Dispatch<SetStateAction<boolean>>;
@@ -14,8 +13,7 @@ interface RiderInfoModalInterface {
 export const RiderInfoModal: FunctionComponent<RiderInfoModalInterface> = ({
     setIsRiderModal,
 }) => {
-    const riderInfoArr = useAppSelector((state) => state.PlanReducer.userInfo);
-    const Arr = riderInfoArr.slice(1, riderInfoArr.length);
+    const riderInfoArr = useRiderInfo();
 
     const closeRiderInfo = (): void => {
         setIsRiderModal(false);
@@ -23,7 +21,7 @@ export const RiderInfoModal: FunctionComponent<RiderInfoModalInterface> = ({
     return createPortal(
         <ModalBlurBg closeFunc={closeRiderInfo}>
             <div className="relative top-1/4">
-                {Arr.map((riderInfo) => {
+                {riderInfoArr.map((riderInfo) => {
                     return (
                         <motion.div {...slideBackAnimation}>
                             <div className="bg-white my-2 px-4 py-2 rounded-lg shadow-lg relative w-64 sm:w-80 mx-auto">
