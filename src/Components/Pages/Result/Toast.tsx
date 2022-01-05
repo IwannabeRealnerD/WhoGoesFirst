@@ -13,7 +13,7 @@ export const Toast: FunctionComponent<ToastInterface> = ({ toastMessage }) => {
             {...FadeInOutVariants}
             className="fixed bottom-0 right-0 h-1/4 w-full bg-gradient-to-t from-gray-500 to-transparent"
         >
-            <p className="w-56 text-center absolute bottom-1/4 bg-white shadow-lg py-2 px-3 rounded-lg left-1/2 transform -translate-x-1/2">
+            <p className="w-64 sm:w-80 text-center absolute bottom-1/4 bg-white shadow-lg py-2 px-3 rounded-lg left-1/2 transform -translate-x-1/2">
                 {toastMessage}
             </p>
         </motion.div>,

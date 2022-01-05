@@ -24,7 +24,7 @@ export const ResultCards: FunctionComponent = () => {
 
     const isWhereExist = destinationRedux || urlRedux;
     const isDateExist = startDate || endDate;
-    const isUserInfoExist = riderInfoArr.length > 1;
+    const isUserInfoExist = riderInfoArr.length > 0;
     const nothingExist = !(isWhereExist || isDateExist || isUserInfoExist);
 
     const shareFunction = (): void => {
@@ -54,7 +54,7 @@ export const ResultCards: FunctionComponent = () => {
             ) : (
                 <button
                     type="button"
-                    className="whiteHover mt-10 block mx-auto mb-6 p-4 py-3 rounded-lg shadow-lg"
+                    className="whiteHover mt-10 block mx-auto mb-6 p-4 py-3 rounded-lg shadow-lg animate-bounce"
                     onClick={shareFunction}
                     disabled={isMessageOn}
                 >
@@ -62,9 +62,7 @@ export const ResultCards: FunctionComponent = () => {
                 </button>
             )}
             <AnimatePresence exitBeforeEnter>
-                {isCopied && (
-                    <Toast toastMessage="공유링크가 클립보드에 복사됐습니다." />
-                )}
+                {isCopied && <Toast toastMessage="클리보드에 복사완료!" />}
                 {isCopyAvailable === false && (
                     <Toast toastMessage="접속환경으로 인해 복사가 불가능합니다." />
                 )}

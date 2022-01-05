@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
@@ -65,7 +65,7 @@ export const Who: FunctionComponent = () => {
                     <InfoCard
                         key={infoCardVal}
                         riderInfo={riderInfo}
-                        riderIndex={index + 1}
+                        riderIndex={index}
                     />
                 );
             })}

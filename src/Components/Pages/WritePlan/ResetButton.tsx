@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { FunctionComponent } from "react";
-import { GrPowerReset } from "react-icons/gr";
 import { FiDelete } from "react-icons/fi";
 
 interface ResetButtonInterface {

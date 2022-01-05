@@ -11,7 +11,7 @@ interface ShareLinkCreator {
         urlRedux: string | null,
         startDate: Date | null,
         endDate: Date | null,
-        riderInfo: RiderInfoArrInterface[]
+        riderInfoArr: RiderInfoArrInterface[]
     ): string;
 }
 
@@ -21,7 +21,7 @@ export const shareLinkCreator: ShareLinkCreator = (
     urlRedux,
     startDate,
     endDate,
-    riderInfo
+    riderInfoArr
 ) => {
     const AFTERHTTPS = 7;
     const ENDOFADDR = baseUrl.indexOf("/result", AFTERHTTPS); // https다음 주소만
@@ -52,13 +52,12 @@ export const shareLinkCreator: ShareLinkCreator = (
     if (endDate !== null) {
         urlObj.ed4 = btoa(`${endDate.getTime()}`);
     }
-    const refinedRiderInfo = riderInfo.slice(1, riderInfo.length);
-    if (refinedRiderInfo !== null) {
-        const riderInfoArr = refinedRiderInfo.map(
+    if (riderInfoArr !== null) {
+        const urlRinderInfoArr = riderInfoArr.map(
             (element) =>
                 `${element.name}/${element.tel}/${element.bikeClass.join("")}-`
         );
-        urlObj.ri5 = btoa(encodeURIComponent(riderInfoArr.join("")));
+        urlObj.ri5 = btoa(encodeURIComponent(urlRinderInfoArr.join("")));
     }
     const param = new URLSearchParams(urlObj);
     const resultUrl = `${currentAddr}${param.toString()}`;
