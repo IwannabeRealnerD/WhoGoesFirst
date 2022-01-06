@@ -17,7 +17,7 @@ export const MenuDown: FunctionComponent<MenuDownProps> = ({
 
     return createPortal(
         <ModalBlurBg closeFunc={closeFunc}>
-            <div className="relative browserSize top-1/4 mx-auto bg-white rounded-md overflow-hidden ">
+            <div className="relative browserSize top-1/4 mx-auto bg-white rounded-md overflow-hidden">
                 {menuArr.map((menuObj) => (
                     <Link
                         key={menuObj.menuName}

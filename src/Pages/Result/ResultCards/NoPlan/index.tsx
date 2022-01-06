@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { createPortal } from "react-dom";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { ModalBlurBg } from "@Components/ModalBlurBg";
 import { CardWrapper } from "@Components/Pages/Result";

@@ -1,26 +1,11 @@
 import { FunctionComponent } from "react";
-import { IoIosClose } from "react-icons/io";
-import { catchphraseOff } from "@Redux/Reducers/SettingsReducer/Actions";
-import { useAppDispatch } from "@Redux/Hooks";
 
 export const CatchPhrase: FunctionComponent = () => {
-    const dispatch = useAppDispatch();
-    const closeCatchphrase = (): void => {
-        dispatch(catchphraseOff());
-    };
-
     return (
-        <div className="relative mx-5">
+        <div className="relative ml-5">
             <span className="sm:text-xl font-bold text-gray-900">
                 네비찍고.. 인원 체크하고..
             </span>
-            <button
-                type="button"
-                onClick={closeCatchphrase}
-                className="relative transform translate-y-2"
-            >
-                <IoIosClose size={30} color="gray" />
-            </button>
             <p className="sm:text-xl font-bold text-gray-900">
                 도착지 주소 확인하고..
             </p>

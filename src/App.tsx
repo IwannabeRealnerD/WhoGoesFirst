@@ -14,11 +14,17 @@ import { ProgressBar } from "@Pages/Writeplan/ProgressBar";
 
 const App: FunctionComponent = () => {
     const location = useLocation();
+
+    const isProgressBar =
+        location.pathname !== "/" && location.pathname !== "/settings";
+
     return (
         <>
             <TopNav />
-            {location.pathname !== "/" && <ProgressBar />}
-            <div className="py-24 ">
+            <AnimatePresence exitBeforeEnter>
+                {isProgressBar && <ProgressBar />}
+            </AnimatePresence>
+            <div className="py-24">
                 <AnimatePresence exitBeforeEnter>
                     <Switch location={location} key={location.key}>
                         <Route path="/result">

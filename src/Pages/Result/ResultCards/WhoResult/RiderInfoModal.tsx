@@ -23,7 +23,10 @@ export const RiderInfoModal: FunctionComponent<RiderInfoModalInterface> = ({
             <div className="relative top-1/4">
                 {riderInfoArr.map((riderInfo) => {
                     return (
-                        <motion.div {...slideBackAnimation}>
+                        <motion.div
+                            {...slideBackAnimation}
+                            key={`${riderInfo.name} ${riderInfo.tel}`}
+                        >
                             <div className="browserSize bg-white my-2 px-4 py-2 rounded-lg shadow-lg relative mx-auto">
                                 <div className="block sm:flex sm:justify-between">
                                     <span className="font-semibold block sm:inline">

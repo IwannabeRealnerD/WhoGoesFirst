@@ -5,7 +5,6 @@ import { NoMatch } from "@Pages/NoMatch";
 import { Where } from "./1where";
 import { When } from "./2when";
 import { Who } from "./3who";
-import { ProgressBar } from "./ProgressBar";
 
 export const WritePlan: FunctionComponent = () => {
     const { url } = useRouteMatch();
