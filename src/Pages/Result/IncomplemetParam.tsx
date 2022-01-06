@@ -12,7 +12,7 @@ export const IncompleteParam: FunctionComponent = () => {
 
     return createPortal(
         <ModalBlurBg>
-            <div className="relative top-1/4 w-64 sm:w-80 mx-auto">
+            <div className="relative top-1/4 browserSize mx-auto">
                 <CardWrapper>
                     <p className="text-lg">잘못된 공유 링크입니다.</p>
                     <p className="text-gray-600">

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
@@ -7,7 +7,7 @@ import { slideVariants } from "@Components/MotionVariants";
 import { writeRiderInfo } from "@Redux/Reducers/PlanReducer/Actions";
 import { NavButton } from "@Components/Pages/WritePlan";
 import { MenuIndicator } from "@Components/Pages";
-import { useRiderInfo } from "@Components/CustomHook/useRinderInfo";
+import { useRiderInfo } from "@Components/CustomHook/usePlanRedux";
 import { SubmitWhoInterface } from "./Interface";
 import { WriteInfo } from "./WriteInfo";
 import { InfoCard } from "./InfoCard";
@@ -17,7 +17,7 @@ export const Who: FunctionComponent = () => {
     const history = useHistory();
 
     const [isBack, setIsBack] = useState<boolean | null>(null);
-    const riderInfoArr = useRiderInfo();
+    const { riderInfoArr } = useRiderInfo();
 
     const submitRiderInfo = ({
         name,
@@ -48,11 +48,11 @@ export const Who: FunctionComponent = () => {
             initial="hidden"
             animate="visible"
             exit={isBack ? "slideBackExit" : "slideExit"}
-            className="w-64 sm:w-80 mx-auto"
+            className="browserSize mx-auto"
         >
             <NavButton
                 placeholderBefore="날짜"
-                placeholderAfter="결과페이지"
+                placeholderAfter="결과"
                 setIsBack={setIsBack}
             />
             <MenuIndicator menuName="인원정보" />

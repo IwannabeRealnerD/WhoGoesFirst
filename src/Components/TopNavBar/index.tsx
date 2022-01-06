@@ -44,7 +44,7 @@ export const TopNav: FunctionComponent = () => {
                         </motion.h1>
                     </Link>
                 </div>
-                <div>
+                <div className="flex items-center">
                     <Menu />
                 </div>
             </div>

@@ -76,7 +76,7 @@ export const Result: FunctionComponent = () => {
     }, [urlParsingFunc]);
 
     return (
-        <motion.div {...FadeInOutVariants} className="w-64 sm:w-80 mx-auto">
+        <motion.div {...FadeInOutVariants} className="browserSize mx-auto">
             {isCompleteParam === true ? <ResultCards /> : <IncompleteParam />}
         </motion.div>
     );

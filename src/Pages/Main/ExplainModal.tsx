@@ -1,4 +1,5 @@
 import { ModalBlurBg } from "@Components/ModalBlurBg";
+import { NOTION_ADDR } from "@Components/Strings";
 import { useAppDispatch } from "@Redux/Hooks";
 import { explainOff } from "@Redux/Reducers/SettingsReducer/Actions";
 import { FunctionComponent } from "react";
@@ -8,9 +9,7 @@ export const ExplainModal: FunctionComponent = () => {
     const dispatch = useAppDispatch();
 
     const toNotion = (): void => {
-        window.open(
-            "https://iwannaberealnerd.notion.site/69e74b82e0e64f1790066e56659a3f08"
-        );
+        window.open(NOTION_ADDR);
         dispatch(explainOff());
     };
 
@@ -19,7 +18,7 @@ export const ExplainModal: FunctionComponent = () => {
     };
     return createPortal(
         <ModalBlurBg>
-            <div className="relative top-1/4 bg-white rounded-md overflow-hidden w-64 sm:w-80 mx-auto p-3">
+            <div className="relative top-1/4 bg-white rounded-md overflow-hidden browserSize mx-auto p-3">
                 <p className="text-lg">처음 오셨군요?</p>
                 <p className="text-gray-600">사용법을 읽어보시겠어요?</p>
                 <div className="flex justify-center">

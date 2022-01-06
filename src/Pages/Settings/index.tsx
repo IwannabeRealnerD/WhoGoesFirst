@@ -2,6 +2,7 @@ import { ChangeEvent, FunctionComponent } from "react";
 import { motion } from "framer-motion";
 
 import { FadeInOutVariants } from "@Components/MotionVariants";
+import { NOTION_ADDR } from "@Components/Strings";
 import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import {
     catchphraseOff,
@@ -24,9 +25,7 @@ export const Settings: FunctionComponent = () => {
         (state) => state.SettingReducer.isCatchphraseOn
     );
     const toNotion = (): void => {
-        window.open(
-            "https://iwannaberealnerd.notion.site/69e74b82e0e64f1790066e56659a3f08"
-        );
+        window.open(NOTION_ADDR);
     };
     // onChange Function
     const onChangeRoot = (evt: ChangeEvent<HTMLInputElement>): void => {
@@ -50,7 +49,7 @@ export const Settings: FunctionComponent = () => {
     ];
 
     return (
-        <motion.div {...FadeInOutVariants} className="w-64 sm:w-80 mx-auto">
+        <motion.div {...FadeInOutVariants} className="browserSize mx-auto">
             <button
                 type="button"
                 className="whiteHover rounded-lg p-2 w-full mb-10"

@@ -2,7 +2,7 @@ import { ModalBlurBg } from "@Components/ModalBlurBg";
 import { Dispatch, FunctionComponent, SetStateAction } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import { menuElements } from "./index";
+import { menuArr } from "./index";
 
 interface MenuDownProps {
     setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -17,8 +17,8 @@ export const MenuDown: FunctionComponent<MenuDownProps> = ({
 
     return createPortal(
         <ModalBlurBg closeFunc={closeFunc}>
-            <div className="relative top-1/4 w-64 sm:w-80 mx-auto bg-white rounded-md overflow-hidden ">
-                {menuElements.map((menuObj) => (
+            <div className="relative browserSize top-1/4 mx-auto bg-white rounded-md overflow-hidden ">
+                {menuArr.map((menuObj) => (
                     <Link
                         key={menuObj.menuName}
                         to={menuObj.to}

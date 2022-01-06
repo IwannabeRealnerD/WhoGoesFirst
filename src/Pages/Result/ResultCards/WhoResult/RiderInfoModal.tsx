@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ModalBlurBg } from "@Components/ModalBlurBg";
 import { slideBackAnimation } from "@Components/MotionVariants/SlideVariants";
 import { arrToBikeClass } from "@Components/Functions";
-import { useRiderInfo } from "@Components/CustomHook/useRinderInfo";
+import { useRiderInfo } from "@Components/CustomHook/usePlanRedux";
 
 interface RiderInfoModalInterface {
     setIsRiderModal: Dispatch<SetStateAction<boolean>>;
@@ -13,7 +13,7 @@ interface RiderInfoModalInterface {
 export const RiderInfoModal: FunctionComponent<RiderInfoModalInterface> = ({
     setIsRiderModal,
 }) => {
-    const riderInfoArr = useRiderInfo();
+    const { riderInfoArr } = useRiderInfo();
 
     const closeRiderInfo = (): void => {
         setIsRiderModal(false);
@@ -24,7 +24,7 @@ export const RiderInfoModal: FunctionComponent<RiderInfoModalInterface> = ({
                 {riderInfoArr.map((riderInfo) => {
                     return (
                         <motion.div {...slideBackAnimation}>
-                            <div className="bg-white my-2 px-4 py-2 rounded-lg shadow-lg relative w-64 sm:w-80 mx-auto">
+                            <div className="browserSize bg-white my-2 px-4 py-2 rounded-lg shadow-lg relative mx-auto">
                                 <div className="block sm:flex sm:justify-between">
                                     <span className="font-semibold block sm:inline">
                                         {riderInfo.name}

@@ -37,7 +37,7 @@ export const EditInfo: FunctionComponent<EditInfoInterface> = ({
 
     return createPortal(
         <ModalBlurBg closeFunc={closeFunc}>
-            <div className="relative w-64 sm:w-80 mx-auto top-1/4">
+            <div className="browserSize relative mx-auto top-1/4">
                 <WriteInfo
                     riderIndex={riderIndex}
                     submitFunc={submitEditedRiderInfo}

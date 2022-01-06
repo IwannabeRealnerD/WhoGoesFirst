@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { useAppDispatch } from "@Redux/Hooks";
 import { deleteRiderInfo } from "@Redux/Reducers/PlanReducer/Actions";
-import { useRiderInfo } from "@Components/CustomHook/useRinderInfo";
+import { useRiderInfo } from "@Components/CustomHook/usePlanRedux";
 import { SubmitWhoInterface } from "../Interface";
 import { NameInput } from "./NameInput";
 import { SelectBox } from "./SelectBox";
@@ -20,7 +20,7 @@ export const WriteInfo: FunctionComponent<WriteInfoInterface> = ({
     submitFunc,
 }) => {
     const dispatch = useAppDispatch();
-    const riderInfoArr = useRiderInfo();
+    const { riderInfoArr } = useRiderInfo();
 
     const { register, handleSubmit, formState, reset, setFocus } = useForm();
     const [errorText, setErrorText] = useState("");

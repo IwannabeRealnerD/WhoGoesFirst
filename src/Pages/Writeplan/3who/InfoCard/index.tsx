@@ -29,7 +29,7 @@ export const InfoCard: FunctionComponent<InfoCardInterface> = ({
         <>
             <AnimatePresence exitBeforeEnter>
                 <motion.div {...slideBackAnimation} onClick={infoOnClick}>
-                    <div className="whiteHover my-2 px-4 py-2 rounded-lg shadow-lg relative cursor-pointer w-64 sm:w-80 mx-auto">
+                    <div className="browserSize whiteHover my-2 px-4 py-2 rounded-lg shadow-lg relative cursor-pointer mx-auto">
                         <div className="block sm:flex sm:justify-between">
                             <span className="font-semibold block sm:inline">
                                 {name}

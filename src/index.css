@@ -27,4 +27,8 @@
     .mainInput {
         @apply text-gray-700 border-gray-300 focus:ring focus:ring-blue-400 focus:ring-offset-2 focus:border-gray-300;
     }
+
+    .browserSize {
+        @apply w-64 sm:w-80 lg:w-96;
+    }
 }

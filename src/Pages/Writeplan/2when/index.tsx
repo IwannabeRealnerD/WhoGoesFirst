@@ -41,7 +41,7 @@ export const When: FunctionComponent = () => {
             initial={location.state === true ? "hiddenFromBack" : "hidden"}
             animate="visible"
             exit={isBack ? "slideBackExit" : "slideExit"}
-            className="w-64 sm:w-80 mx-auto"
+            className="browserSize mx-auto"
         >
             <NavButton
                 placeholderBefore="장소"

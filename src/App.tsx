@@ -9,15 +9,16 @@ import { Result } from "@Pages/Result";
 import { Settings } from "@Pages/Settings";
 import { NoMatch } from "@Pages/NoMatch";
 import { WritePlan } from "@Pages/Writeplan";
-import { SideNavBar } from "@Components/SideNavBar";
+import { BottomBar } from "@Components/BottomBar";
+import { ProgressBar } from "@Pages/Writeplan/ProgressBar";
 
 const App: FunctionComponent = () => {
     const location = useLocation();
     return (
         <>
             <TopNav />
-            <SideNavBar />
-            <div className="pt-24">
+            {location.pathname !== "/" && <ProgressBar />}
+            <div className="py-24 ">
                 <AnimatePresence exitBeforeEnter>
                     <Switch location={location} key={location.key}>
                         <Route path="/result">
@@ -38,6 +39,7 @@ const App: FunctionComponent = () => {
                     </Switch>
                 </AnimatePresence>
             </div>
+            <BottomBar />
         </>
     );
 };

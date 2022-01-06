@@ -12,7 +12,7 @@ export const NoPlan: FunctionComponent = () => {
     };
     return createPortal(
         <ModalBlurBg>
-            <div className="relative top-1/4 w-64 sm:w-80 mx-auto">
+            <div className="relative browserSize top-1/4 mx-auto">
                 <CardWrapper>
                     <p className="text-lg">투어 계획이 존재하지 않습니다!</p>
                     <p className="text-gray-600">
