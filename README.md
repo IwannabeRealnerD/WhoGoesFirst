@@ -1,7 +1,7 @@
-## 프로젝트에 대하여
+## Who Goes First?
 라이딩 투어 계획을 쉽게 작성하고 공유할 수 있는 웹페이지 입니다:)
 
-##프로젝트 설명
+### 프로젝트 설명
 * [Notion](https://iwannaberealnerd.notion.site/Who-Goes-First-032088e172a3468c8de16429ed02ba36)
 
 ### 기술 스택
