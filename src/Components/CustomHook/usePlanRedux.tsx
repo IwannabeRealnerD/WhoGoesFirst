@@ -52,6 +52,6 @@ export const useRiderInfo: useRiderInfoInterface = () => {
     const riderInfoArr = useAppSelector(
         (state) => state.PlanReducer.riderInfoArr
     ).slice(1);
-    const isRiderInfoExist = riderInfoArr.length !== 1;
+    const isRiderInfoExist = riderInfoArr.length !== 0;
     return { riderInfoArr, isRiderInfoExist };
 };
