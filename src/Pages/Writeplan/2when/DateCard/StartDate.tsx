@@ -14,12 +14,11 @@ export const StartDate: FunctionComponent = () => {
     const startDate = useAppSelector((state) => state.PlanReducer.startDate);
     const [startDateMsg, setStartDateMsg] = useState("");
 
-    const isDateLaterThanNow = (selectedData: Date): boolean =>
-        (selectedData.getFullYear() < new Date().getFullYear() &&
-            selectedData.getMonth() < new Date().getMonth()) ||
-        selectedData.getDate() < new Date().getDate();
+    const isDateEarlier = (selectedData: Date): boolean => {
+        return selectedData < new Date();
+    };
     const startHandleChange = (selectedData: Date): void => {
-        if (isDateLaterThanNow(selectedData)) {
+        if (isDateEarlier(selectedData)) {
             setCalenderMsg(
                 `오늘(${new Date().getDate()}) 이후 날짜로 설정해주세요`
             );
