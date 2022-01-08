@@ -1,6 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { slideVariants } from "@Components/MotionVariants";
+import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { NavButton } from "@Components/Pages/WritePlan";
 import { useHistory, useLocation } from "react-router";
 import { DestinationCard } from "./InputCards/DestinationCard";

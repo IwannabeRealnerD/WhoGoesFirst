@@ -2,7 +2,7 @@ import { FunctionComponent, useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { motion } from "framer-motion";
 import { chkParamComplete, paramGetter } from "@Components/Functions";
-import { FadeInOutVariants } from "@Components/MotionVariants";
+import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 import { useAppDispatch } from "@Redux/Hooks";
 import {
     writeDestination,

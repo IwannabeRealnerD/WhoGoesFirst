@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { createPortal } from "react-dom";
 import { useHistory } from "react-router-dom";
 
-import { ModalBlurBg } from "@Components/ModalBlurBg";
+import { ModalBlurBg } from "@Components/UIRelated/ModalBlurBg";
 import { CardWrapper } from "@Components/Pages/Result";
 
 export const NoPlan: FunctionComponent = () => {

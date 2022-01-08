@@ -3,13 +3,13 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { TopNav } from "@Components/TopNavBar";
+import { TopNav } from "@Components/UIRelated/TopNavBar";
 import { Main } from "@Pages/Main";
 import { Result } from "@Pages/Result";
 import { Settings } from "@Pages/Settings";
 import { NoMatch } from "@Pages/NoMatch";
 import { WritePlan } from "@Pages/Writeplan";
-import { BottomBar } from "@Components/BottomBar";
+import { BottomBar } from "@Components/UIRelated/BottomBar";
 import { ProgressBar } from "@Pages/Writeplan/ProgressBar";
 
 const App: FunctionComponent = () => {

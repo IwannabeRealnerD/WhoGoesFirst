@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import { writeEndDate } from "@Redux/Reducers/PlanReducer/Actions";
-import { FadeInOutVariants } from "@Components/MotionVariants";
+import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 import { MenuIndicator } from "@Components/Pages";
 import { Calender } from "../Calender";
 

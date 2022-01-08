@@ -19,7 +19,7 @@
     }
     /* main bg-color is bg-gray-200 -> reasons for active, hover*/
     .whiteHover {
-        @apply transition duration-100 bg-white shadow-lg hover-hover:hover:bg-gray-300 hover-hover:active:bg-gray-400 active:bg-gray-400;
+        @apply transition duration-100 bg-white shadow-lg hover-hover:hover:text-black hover-hover:hover:bg-gray-300 hover-hover:active:bg-gray-400 active:bg-gray-400;
     }
     .mainBtn {
         @apply bg-blue-400 transition duration-300;

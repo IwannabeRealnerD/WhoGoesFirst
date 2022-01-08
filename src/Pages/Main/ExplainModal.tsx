@@ -1,4 +1,4 @@
-import { ModalBlurBg } from "@Components/ModalBlurBg";
+import { ModalBlurBg } from "@Components/UIRelated/ModalBlurBg";
 import { NOTION_ADDR } from "@Components/Strings";
 import { useAppDispatch } from "@Redux/Hooks";
 import { explainOff } from "@Redux/Reducers/SettingsReducer/Actions";

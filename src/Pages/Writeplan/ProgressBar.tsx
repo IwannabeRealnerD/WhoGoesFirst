@@ -8,7 +8,7 @@ import {
     useRiderInfo,
     useUrl,
 } from "@Components/CustomHook/usePlanRedux";
-import { FadeInOutVariants } from "@Components/MotionVariants";
+import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 
 export const ProgressBar: FunctionComponent = () => {
     const { isRiderInfoExist } = useRiderInfo();
@@ -36,7 +36,9 @@ export const ProgressBar: FunctionComponent = () => {
                 <Link
                     key={planElement.planName}
                     to={planElement.to}
-                    className="relative block px-4 py-2 text-gray-700 whiteHover text-center w-36"
+                    className={`relative block px-4 py-2  whiteHover text-center w-36 ${
+                        planElement.isExist ? "text-gray-700" : "text-gray-400"
+                    }`}
                 >
                     {planElement.isExist && (
                         <AiOutlineCheck className="absolute right-3" />

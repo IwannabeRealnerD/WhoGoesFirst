@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useAppSelector } from "@Redux/Hooks";
 
 import { CatchPhrase } from "@Pages/Main/CatchPhrase";
-import { FadeInOutVariants } from "@Components/MotionVariants";
+import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 import { Link } from "react-router-dom";
 import { ExplainModal } from "./ExplainModal";
 
@@ -16,8 +16,9 @@ export const Main: FunctionComponent = () => {
     );
     return (
         <motion.div {...FadeInOutVariants}>
-            {isCatchphraseOn && <CatchPhrase />}
             {isExplainOn && <ExplainModal />}
+            {isCatchphraseOn && <CatchPhrase />}
+
             <Link to="/writeplan/1where">
                 <button
                     type="button"

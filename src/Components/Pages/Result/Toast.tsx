@@ -1,4 +1,4 @@
-import { FadeInOutVariants } from "@Components/MotionVariants";
+import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 import { motion } from "framer-motion";
 import { FunctionComponent } from "react";
 import { createPortal } from "react-dom";

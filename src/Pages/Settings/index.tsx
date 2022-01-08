@@ -1,7 +1,7 @@
 import { ChangeEvent, FunctionComponent } from "react";
 import { motion } from "framer-motion";
 
-import { FadeInOutVariants } from "@Components/MotionVariants";
+import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 import { NOTION_ADDR } from "@Components/Strings";
 import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import {

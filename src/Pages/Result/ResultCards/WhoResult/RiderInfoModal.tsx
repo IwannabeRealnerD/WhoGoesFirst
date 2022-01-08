@@ -1,8 +1,8 @@
 import { Dispatch, FunctionComponent, SetStateAction } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
-import { ModalBlurBg } from "@Components/ModalBlurBg";
-import { slideBackAnimation } from "@Components/MotionVariants/SlideVariants";
+import { ModalBlurBg } from "@Components/UIRelated/ModalBlurBg";
+import { slideBackAnimation } from "@Components/UIRelated/MotionVariants/SlideVariants";
 import { arrToBikeClass } from "@Components/Functions";
 import { useRiderInfo } from "@Components/CustomHook/usePlanRedux";
 

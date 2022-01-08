@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 import { useAppDispatch } from "@Redux/Hooks";
-import { slideVariants } from "@Components/MotionVariants";
+import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { writeRiderInfo } from "@Redux/Reducers/PlanReducer/Actions";
 import { NavButton } from "@Components/Pages/WritePlan";
 import { MenuIndicator } from "@Components/Pages";

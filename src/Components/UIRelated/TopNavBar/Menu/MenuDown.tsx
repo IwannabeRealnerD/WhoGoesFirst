@@ -1,4 +1,4 @@
-import { ModalBlurBg } from "@Components/ModalBlurBg";
+import { ModalBlurBg } from "@Components/UIRelated/ModalBlurBg";
 import { Dispatch, FunctionComponent, SetStateAction } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";

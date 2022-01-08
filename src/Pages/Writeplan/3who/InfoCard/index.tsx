@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { slideBackAnimation } from "@Components/MotionVariants";
+import { slideBackAnimation } from "@Components/UIRelated/MotionVariants";
 import { arrToBikeClass } from "@Components/Functions/BikeClassRelated";
 import { EditInfo } from "../EditInfo";
 

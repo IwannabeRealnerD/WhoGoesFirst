@@ -2,7 +2,7 @@ import { Dispatch, FunctionComponent, SetStateAction } from "react";
 import { createPortal } from "react-dom";
 
 import { editRiderInfo } from "@Redux/Reducers/PlanReducer/Actions";
-import { ModalBlurBg } from "@Components/ModalBlurBg";
+import { ModalBlurBg } from "@Components/UIRelated/ModalBlurBg";
 import { useAppDispatch } from "@Redux/Hooks";
 
 import { WriteInfo } from "../WriteInfo";

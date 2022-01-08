@@ -1,4 +1,4 @@
-import { slideVariants } from "@Components/MotionVariants";
+import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { AnimatePresence, motion } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
