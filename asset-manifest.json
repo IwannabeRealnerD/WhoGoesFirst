@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/WhoGoesFirst/static/css/main.b3d7aa1e.chunk.css",
-    "main.js": "/WhoGoesFirst/static/js/main.3da64852.chunk.js",
-    "main.js.map": "/WhoGoesFirst/static/js/main.3da64852.chunk.js.map",
+    "main.css": "/WhoGoesFirst/static/css/main.25a7f239.chunk.css",
+    "main.js": "/WhoGoesFirst/static/js/main.2741da2d.chunk.js",
+    "main.js.map": "/WhoGoesFirst/static/js/main.2741da2d.chunk.js.map",
     "runtime-main.js": "/WhoGoesFirst/static/js/runtime-main.d2753f82.js",
     "runtime-main.js.map": "/WhoGoesFirst/static/js/runtime-main.d2753f82.js.map",
     "static/css/2.4a43da54.chunk.css": "/WhoGoesFirst/static/css/2.4a43da54.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.67966eac.chunk.js.map": "/WhoGoesFirst/static/js/2.67966eac.chunk.js.map",
     "index.html": "/WhoGoesFirst/index.html",
     "static/css/2.4a43da54.chunk.css.map": "/WhoGoesFirst/static/css/2.4a43da54.chunk.css.map",
-    "static/css/main.b3d7aa1e.chunk.css.map": "/WhoGoesFirst/static/css/main.b3d7aa1e.chunk.css.map",
+    "static/css/main.25a7f239.chunk.css.map": "/WhoGoesFirst/static/css/main.25a7f239.chunk.css.map",
     "static/js/2.67966eac.chunk.js.LICENSE.txt": "/WhoGoesFirst/static/js/2.67966eac.chunk.js.LICENSE.txt",
     "static/media/Motorcycle.b4919f3e.png": "/WhoGoesFirst/static/media/Motorcycle.b4919f3e.png"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.d2753f82.js",
     "static/css/2.4a43da54.chunk.css",
     "static/js/2.67966eac.chunk.js",
-    "static/css/main.b3d7aa1e.chunk.css",
-    "static/js/main.3da64852.chunk.js"
+    "static/css/main.25a7f239.chunk.css",
+    "static/js/main.2741da2d.chunk.js"
   ]
 }
