@@ -19,11 +19,13 @@ export const EndDate: FunctionComponent = () => {
 
     const [endDateMsg, setEndDateMsg] = useState("");
 
-    const isDateLaterThanStart = (selectedData: Date): boolean =>
-        selectedData < startDate;
+    const isDateEarlierThanStart = (selectedData: Date): boolean =>
+        selectedData.getDate() <= startDate.getDate() &&
+        selectedData.getMonth() <= startDate.getMonth() &&
+        selectedData.getFullYear() <= startDate.getFullYear();
 
     const endHandleChange = (selectedData: Date): void => {
-        if (isDateLaterThanStart(selectedData)) {
+        if (isDateEarlierThanStart(selectedData)) {
             setCalenderMsg(
                 `오늘(${new Date().getDate()}) 이후 날짜로 설정해주세요`
             );

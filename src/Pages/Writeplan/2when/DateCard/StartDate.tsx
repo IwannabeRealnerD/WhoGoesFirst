@@ -14,15 +14,10 @@ export const StartDate: FunctionComponent = () => {
     const startDate = useAppSelector((state) => state.PlanReducer.startDate);
     const [startDateMsg, setStartDateMsg] = useState("");
 
-    // 날짜가 오늘보다 더 후면 부정
-    // 선택한 날짜가 오늘보다 빠르면 긍정
     const isDateEarlier = (selectedData: Date): boolean => {
-        console.log(selectedData.getDate() <= new Date().getDate());
-        return (
-            selectedData.getDate() < new Date().getDate() &&
-            selectedData.getMonth() <= new Date().getMonth() &&
-            selectedData.getFullYear() <= new Date().getFullYear()
-        );
+        selectedData.setHours(0, 0, 0, 0);
+        const today = new Date(new Date().setHours(0, 0, 0, 0));
+        return selectedData.getTime() < today.getTime();
     };
     const startHandleChange = (selectedData: Date): void => {
         if (isDateEarlier(selectedData)) {
