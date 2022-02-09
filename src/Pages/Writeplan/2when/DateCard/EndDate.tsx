@@ -19,15 +19,14 @@ export const EndDate: FunctionComponent = () => {
 
     const [endDateMsg, setEndDateMsg] = useState("");
 
-    const isDateEarlierThanStart = (selectedData: Date): boolean =>
-        selectedData.getDate() <= startDate.getDate() &&
-        selectedData.getMonth() <= startDate.getMonth() &&
-        selectedData.getFullYear() <= startDate.getFullYear();
-
+    const isDateEarlierThanStart = (selectedData: Date): boolean => {
+        selectedData.setHours(0, 0, 0, 0);
+        return selectedData.getTime() <= startDate.getTime();
+    };
     const endHandleChange = (selectedData: Date): void => {
         if (isDateEarlierThanStart(selectedData)) {
             setCalenderMsg(
-                `오늘(${new Date().getDate()}) 이후 날짜로 설정해주세요`
+                `선택한 날짜(${new Date().getDate()}) 이후 날짜로 설정해주세요`
             );
             dispatch(writeEndDate(null));
             return;
