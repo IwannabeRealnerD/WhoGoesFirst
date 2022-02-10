@@ -41,7 +41,7 @@ export const Menu: FunctionComponent = () => {
                     <Link
                         key={planElement.menuName}
                         to={planElement.to}
-                        className="relative px-4 py-2 text-white font-medium text-center"
+                        className="relative px-4 py-2 text-white font-medium text-center hover-hover:hover:bg-white hover-hover:hover:text-black rounded-lg transition duration-100 active:bg-gray-400 hover-hover:active:bg-gray-400"
                     >
                         {planElement.menuName}
                     </Link>
