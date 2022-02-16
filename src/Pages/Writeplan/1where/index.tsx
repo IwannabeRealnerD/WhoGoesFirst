@@ -5,7 +5,6 @@ import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { NavButton } from "@Components/Pages/WritePlan";
 import { useDestination } from "@Components/CustomHook/usePlanRedux";
 import { useHistory, useLocation } from "react-router";
-import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import { DestinationCard } from "./InputCards/DestinationCard";
 import { ModalExplain } from "./ModalExplain";
 
@@ -13,6 +12,8 @@ export const Where: FunctionComponent = () => {
     const history = useHistory();
     const location = useLocation();
     const { destinationRedux, setDestinationRedux } = useDestination();
+
+    const defaultValue = destinationRedux ?? "";
 
     const [isExplain, setIsExplain] = useState(false);
     const [isBack, setIsBack] = useState<boolean | null>(null);
@@ -59,7 +60,10 @@ export const Where: FunctionComponent = () => {
                     setIsBack={setIsBack}
                     isSubmit
                 />
-                <DestinationCard register={register} />
+                <DestinationCard
+                    defaultValue={destinationRedux}
+                    register={register}
+                />
             </form>
         </motion.div>
     );
