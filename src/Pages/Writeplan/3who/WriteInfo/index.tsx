@@ -14,7 +14,6 @@ interface WriteInfoInterface {
     submitFunc({ name, tel, bikeClass }: SubmitWhoInterface): void;
 }
 
-// const defaultProps =
 export const WriteInfo: FunctionComponent<WriteInfoInterface> = ({
     riderIndex,
     submitFunc,

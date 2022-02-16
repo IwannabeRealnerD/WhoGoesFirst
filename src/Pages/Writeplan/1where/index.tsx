@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
 import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { NavButton } from "@Components/Pages/WritePlan";
 import { useHistory, useLocation } from "react-router";
@@ -12,8 +13,8 @@ export const Where: FunctionComponent = () => {
     const location = useLocation();
 
     const [isExplain, setIsExplain] = useState(false);
-    const [isDestination, setIsDestination] = useState(false);
     const [isBack, setIsBack] = useState<boolean | null>(null);
+    const { register, handleSubmit, formState, setFocus, reset } = useForm();
 
     // Animation related code
     useEffect(() => {
@@ -40,33 +41,17 @@ export const Where: FunctionComponent = () => {
             className="w-64 sm:w-80 mx-auto"
         >
             {isExplain && <ModalExplain setIsExplain={setIsExplain} />}
+
             <NavButton
                 placeholderBefore="홈으로"
                 placeholderAfter="날짜"
                 setIsBack={setIsBack}
+                isSubmit
             />
-            <DestinationCard
-                key="destinationKey"
-                setIsDestination={setIsDestination}
-            />
-            <AnimatePresence exitBeforeEnter>
-                {isDestination && (
-                    <motion.div
-                        variants={slideVariants}
-                        initial={
-                            location.state !== null
-                                ? "hiddenFromBack"
-                                : "hidden"
-                        }
-                        exit="slideBackExit"
-                        animate="visible"
-                        key="urlkey"
-                        className="mt-5"
-                    >
-                        <URLCard />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <form>
+                <DestinationCard register={register} />
+                {/* <URLCard /> */}
+            </form>
         </motion.div>
     );
 };
