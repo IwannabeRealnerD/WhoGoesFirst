@@ -1,4 +1,9 @@
 import { useAppSelector } from "@Redux/Hooks";
+import { useDispatch } from "react-redux";
+import {
+    writeDestination,
+    writeUrl,
+} from "@Redux/Reducers/PlanReducer/Actions";
 
 interface RiderInfoArr {
     name: string;
@@ -7,7 +12,11 @@ interface RiderInfoArr {
 }
 
 interface useDestinationInterface {
-    (): { destinationRedux: null | string; isDestinationReduxExist: boolean };
+    (): {
+        destinationRedux: null | string;
+        isDestinationReduxExist: boolean;
+        setDestinationRedux(destinationStr: string): void;
+    };
 }
 
 interface useUrlInterface {
@@ -27,11 +36,17 @@ interface useRiderInfoInterface {
 }
 
 export const useDestination: useDestinationInterface = () => {
+    const dispatch = useDispatch();
     const destinationRedux = useAppSelector(
         (state) => state.PlanReducer.destination
     );
+
+    const setDestinationRedux = (destinationStr: string): void => {
+        dispatch(writeDestination(destinationStr));
+    };
+
     const isDestinationReduxExist = destinationRedux !== null;
-    return { destinationRedux, isDestinationReduxExist };
+    return { destinationRedux, isDestinationReduxExist, setDestinationRedux };
 };
 
 export const useUrl: useUrlInterface = () => {

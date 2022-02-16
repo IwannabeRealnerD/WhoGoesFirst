@@ -3,18 +3,28 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { NavButton } from "@Components/Pages/WritePlan";
+import { useDestination } from "@Components/CustomHook/usePlanRedux";
 import { useHistory, useLocation } from "react-router";
+import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import { DestinationCard } from "./InputCards/DestinationCard";
-import { URLCard } from "./InputCards/URLCard";
 import { ModalExplain } from "./ModalExplain";
 
 export const Where: FunctionComponent = () => {
     const history = useHistory();
     const location = useLocation();
+    const { destinationRedux, setDestinationRedux } = useDestination();
 
     const [isExplain, setIsExplain] = useState(false);
     const [isBack, setIsBack] = useState<boolean | null>(null);
     const { register, handleSubmit, formState, setFocus, reset } = useForm();
+
+    const submitWhereInfo = ({
+        destination,
+    }: {
+        destination: string;
+    }): void => {
+        setDestinationRedux(destination);
+    };
 
     // Animation related code
     useEffect(() => {
@@ -42,15 +52,14 @@ export const Where: FunctionComponent = () => {
         >
             {isExplain && <ModalExplain setIsExplain={setIsExplain} />}
 
-            <NavButton
-                placeholderBefore="홈으로"
-                placeholderAfter="날짜"
-                setIsBack={setIsBack}
-                isSubmit
-            />
-            <form>
+            <form onSubmit={handleSubmit(submitWhereInfo)}>
+                <NavButton
+                    placeholderBefore="홈으로"
+                    placeholderAfter="날짜"
+                    setIsBack={setIsBack}
+                    isSubmit
+                />
                 <DestinationCard register={register} />
-                {/* <URLCard /> */}
             </form>
         </motion.div>
     );
