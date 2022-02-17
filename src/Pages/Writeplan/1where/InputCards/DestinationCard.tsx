@@ -8,7 +8,7 @@ interface DestinationInterface {
     register: UseFormRegister<FieldValues>;
     defaultValue: string | null;
 }
-// const destinationRegexp = /^.{2,35}$/;
+const destinationRegexp = /^.{2,35}$/;
 
 export const DestinationCard: FunctionComponent<DestinationInterface> = ({
     register,
@@ -21,8 +21,7 @@ export const DestinationCard: FunctionComponent<DestinationInterface> = ({
                 <div className="px-4">
                     <input
                         {...register("destination", {
-                            required: true,
-                            // pattern: destinationRegexp,
+                            pattern: destinationRegexp,
                         })}
                         type="text"
                         placeholder="목적지"

@@ -3,28 +3,18 @@ import { useAppDispatch, useAppSelector } from "@Redux/Hooks";
 import { writeUrl } from "@Redux/Reducers/PlanReducer/Actions";
 import { AnimatePresence } from "framer-motion";
 import { FunctionComponent, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm, UseFormRegister } from "react-hook-form";
 
-export interface SubmitWhereInterface {
-    url: string;
+export interface URLInterface {
+    register: UseFormRegister<FieldValues>;
+    defaultValue: string | null;
 }
 const destinationRegexp = /^.{5,60}$/;
 
-export const URLCard: FunctionComponent = () => {
-    const dispatch = useAppDispatch();
-    const urlRedux = useAppSelector((state) => state.PlanReducer.url);
-
-    const [isReset, setIsReset] = useState(false);
-    const [buttonStatus, setButtonStatus] = useState(true);
-    const [buttonText, setButtonText] = useState("입력");
-
-    const defaultValue = urlRedux ?? "";
-    const { register, handleSubmit, formState, setFocus, reset } = useForm({
-        defaultValues: {
-            url: defaultValue,
-        },
-    });
-
+export const URLCard: FunctionComponent<URLInterface> = ({
+    register,
+    defaultValue,
+}) => {
     const submitUrlAddr = ({ url }: SubmitWhereInterface): void => {
         if (isReset) {
             setIsReset(false);
@@ -35,41 +25,6 @@ export const URLCard: FunctionComponent = () => {
         setIsReset(true);
         dispatch(writeUrl(url));
     };
-
-    const resteFunc = (): void => {
-        reset();
-        setIsReset(false);
-        dispatch(writeUrl(null));
-    };
-
-    useEffect(() => {
-        const urlAddrCheck = (): boolean =>
-            formState.errors.url?.type === "required";
-        const urlAddrPatternCheck = (): boolean =>
-            formState.errors.url?.type === "pattern";
-
-        if (urlAddrCheck()) {
-            setButtonText("값을 입력해주세요.");
-            setButtonStatus(false);
-            return;
-        }
-        if (urlAddrPatternCheck()) {
-            setButtonText("5글자 이상 입력해주세요.");
-            setButtonStatus(false);
-            return;
-        }
-        if (urlRedux !== null) {
-            setButtonText("입력완료");
-            setIsReset(true);
-            setButtonStatus(true);
-            setIsReset(true);
-            return;
-        }
-        setButtonText("입력");
-        setButtonStatus(true);
-        setIsReset(false);
-        setFocus("url");
-    }, [formState, isReset, urlRedux, setFocus]);
 
     return (
         <>

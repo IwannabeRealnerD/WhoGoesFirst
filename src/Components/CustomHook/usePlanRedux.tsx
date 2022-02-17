@@ -15,7 +15,7 @@ interface useDestinationInterface {
     (): {
         destinationRedux: null | string;
         isDestinationReduxExist: boolean;
-        setDestinationRedux(destinationStr: string): void;
+        setDestinationRedux(destinationStr: string | null): void;
     };
 }
 
@@ -41,7 +41,7 @@ export const useDestination: useDestinationInterface = () => {
         (state) => state.PlanReducer.destination
     );
 
-    const setDestinationRedux = (destinationStr: string): void => {
+    const setDestinationRedux = (destinationStr: string | null): void => {
         dispatch(writeDestination(destinationStr));
     };
 

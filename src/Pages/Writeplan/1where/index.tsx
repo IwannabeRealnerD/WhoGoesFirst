@@ -13,8 +13,6 @@ export const Where: FunctionComponent = () => {
     const location = useLocation();
     const { destinationRedux, setDestinationRedux } = useDestination();
 
-    const defaultValue = destinationRedux ?? "";
-
     const [isExplain, setIsExplain] = useState(false);
     const [isBack, setIsBack] = useState<boolean | null>(null);
     const { register, handleSubmit, formState, setFocus, reset } = useForm();
@@ -24,6 +22,10 @@ export const Where: FunctionComponent = () => {
     }: {
         destination: string;
     }): void => {
+        if (destination === "") {
+            setDestinationRedux(null);
+            return;
+        }
         setDestinationRedux(destination);
     };
 
