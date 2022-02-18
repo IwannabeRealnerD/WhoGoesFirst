@@ -16,16 +16,17 @@ export const ErrorModal: FunctionComponent<ErrorModalInterface> = ({
         <ModalBlurBg>
             <div className="relative top-1/4 browserSize mx-auto">
                 <CardWrapper>
-                    <p className="text-lg">{errObj.input} 오류</p>
+                    <p className="text-lg">{errObj.input}</p>
                     <p className="text-gray-600">{errObj.msg}</p>
-
-                    <button
-                        type="button"
-                        className="grayBtn block mt-3 mx-auto"
-                        onClick={closeFunc}
-                    >
-                        나가기
-                    </button>
+                    <div className="text-center">
+                        <button
+                            type="button"
+                            className="grayBtn mt-3"
+                            onClick={closeFunc}
+                        >
+                            확인
+                        </button>
+                    </div>
                 </CardWrapper>
             </div>
         </ModalBlurBg>,

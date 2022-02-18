@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { NavButton } from "@Components/Pages/WritePlan";
@@ -98,7 +98,9 @@ export const Where: FunctionComponent = () => {
                 />
                 <URLCard defaultValue={urlRedux} register={register} />
             </form>
-            {errObj && <ErrorModal setErrMsg={setErrObj} errObj={errObj} />}
+            <AnimatePresence>
+                {errObj && <ErrorModal setErrMsg={setErrObj} errObj={errObj} />}
+            </AnimatePresence>
         </motion.div>
     );
 };
