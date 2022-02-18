@@ -2,7 +2,6 @@ import { FunctionComponent } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import { MenuIndicator } from "@Components/Pages";
-import { ResetButton } from "@Components/Pages/WritePlan/ResetButton";
 
 interface DestinationInterface {
     register: UseFormRegister<FieldValues>;

@@ -1,5 +1,4 @@
 import { FunctionComponent, SetStateAction } from "react";
-import { FieldValues, UseFormHandleSubmit } from "react-hook-form";
 
 interface NavButtonProps {
     placeholderBefore: string;
@@ -26,7 +25,9 @@ export const NavButton: FunctionComponent<NavButtonProps> = ({
             <button
                 type={isSubmit === true ? "submit" : "button"}
                 className="grayBtn"
-                onClick={() => setIsBack(false)}
+                onClick={() => {
+                    if (!isSubmit) setIsBack(false);
+                }}
             >
                 {placeholderAfter}&raquo;
             </button>

@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { FunctionComponent } from "react";
 import { useCopy } from "@Components/CustomHook";
-import { Toast } from "@Components/Pages/Result/Toast";
+import { Toast } from "@Components/UIRelated/Toast";
 import { shareLinkCreator } from "@Components/Functions";
 import { useRiderInfo } from "@Components/CustomHook/usePlanRedux";
 import { useAppSelector } from "@Redux/Hooks";

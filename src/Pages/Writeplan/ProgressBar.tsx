@@ -6,14 +6,14 @@ import {
     useDate,
     useDestination,
     useRiderInfo,
-    useUrl,
+    useURL,
 } from "@Components/CustomHook/usePlanRedux";
 import { FadeInOutVariants } from "@Components/UIRelated/MotionVariants";
 
 export const ProgressBar: FunctionComponent = () => {
     const { isRiderInfoExist } = useRiderInfo();
     const { isDestinationReduxExist } = useDestination();
-    const { isUrlReduxExist } = useUrl();
+    const { isUrlReduxExist } = useURL();
     const { isDateReduxExist } = useDate();
 
     const planArr = [

@@ -3,30 +3,43 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { slideVariants } from "@Components/UIRelated/MotionVariants";
 import { NavButton } from "@Components/Pages/WritePlan";
-import { useDestination } from "@Components/CustomHook/usePlanRedux";
+import { useDestination, useURL } from "@Components/CustomHook/usePlanRedux";
 import { useHistory, useLocation } from "react-router";
 import { DestinationCard } from "./InputCards/DestinationCard";
-import { ModalExplain } from "./ModalExplain";
+import { URLCard } from "./InputCards/URLCard";
+import { ErrorModal } from "./ErrorModal";
+import { ErrorInfo } from "./Interface";
+
+interface submitWhereInterface {
+    destination: string;
+    url: string;
+}
 
 export const Where: FunctionComponent = () => {
     const history = useHistory();
     const location = useLocation();
     const { destinationRedux, setDestinationRedux } = useDestination();
+    const { urlRedux, setURLRedux } = useURL();
 
-    const [isExplain, setIsExplain] = useState(false);
+    const [errObj, setErrObj] = useState<null | ErrorInfo>(null);
     const [isBack, setIsBack] = useState<boolean | null>(null);
-    const { register, handleSubmit, formState, setFocus, reset } = useForm();
+    const { register, handleSubmit, formState, clearErrors } = useForm({
+        reValidateMode: "onSubmit",
+    });
 
-    const submitWhereInfo = ({
-        destination,
-    }: {
-        destination: string;
-    }): void => {
+    const submitWhere = ({ destination, url }: submitWhereInterface): void => {
+        if (destination !== "") {
+            setDestinationRedux(destination);
+        }
+        if (url !== "") {
+            setURLRedux(url);
+        }
         if (destination === "") {
             setDestinationRedux(null);
-            return;
         }
-        setDestinationRedux(destination);
+        if (url === "") {
+            setURLRedux(null);
+        }
     };
 
     // Animation related code
@@ -41,6 +54,25 @@ export const Where: FunctionComponent = () => {
         }
     }, [isBack, history]);
 
+    // user input handling - pattern
+    useEffect(() => {
+        if (formState.errors.destination?.type === "pattern") {
+            setErrObj({ input: "도착지", msg: "2글자 이상 입력해주세요 :)" });
+            clearErrors();
+            return;
+        }
+        if (formState.errors.url?.type === "pattern") {
+            setErrObj({
+                input: "네비 주소",
+                msg: "https:// 시작하는 주소를 입력해주세요",
+            });
+            clearErrors();
+            return;
+        }
+        if (formState.isSubmitSuccessful) {
+            setIsBack(false);
+        }
+    }, [formState]);
     return (
         <motion.div
             variants={slideVariants}
@@ -53,9 +85,7 @@ export const Where: FunctionComponent = () => {
             animate="visible"
             className="w-64 sm:w-80 mx-auto"
         >
-            {isExplain && <ModalExplain setIsExplain={setIsExplain} />}
-
-            <form onSubmit={handleSubmit(submitWhereInfo)}>
+            <form onSubmit={handleSubmit(submitWhere)}>
                 <NavButton
                     placeholderBefore="홈으로"
                     placeholderAfter="날짜"
@@ -66,7 +96,9 @@ export const Where: FunctionComponent = () => {
                     defaultValue={destinationRedux}
                     register={register}
                 />
+                <URLCard defaultValue={urlRedux} register={register} />
             </form>
+            {errObj && <ErrorModal setErrMsg={setErrObj} errObj={errObj} />}
         </motion.div>
     );
 };

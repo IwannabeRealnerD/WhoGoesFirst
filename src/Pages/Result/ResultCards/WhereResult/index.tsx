@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { CardWrapper } from "@Components/Pages/Result";
-import { Toast } from "@Components/Pages/Result/Toast";
+import { Toast } from "@Components/UIRelated/Toast";
 import { AnimatePresence } from "framer-motion";
 import { useCopy } from "@Components/CustomHook/useCopy";
 

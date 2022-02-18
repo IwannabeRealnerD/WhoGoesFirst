@@ -19,8 +19,12 @@ interface useDestinationInterface {
     };
 }
 
-interface useUrlInterface {
-    (): { urlRedux: null | string; isUrlReduxExist: boolean };
+interface useURLInterface {
+    (): {
+        urlRedux: null | string;
+        isUrlReduxExist: boolean;
+        setURLRedux(urlStr: string | null): void;
+    };
 }
 
 interface useDateInterface {
@@ -49,10 +53,14 @@ export const useDestination: useDestinationInterface = () => {
     return { destinationRedux, isDestinationReduxExist, setDestinationRedux };
 };
 
-export const useUrl: useUrlInterface = () => {
+export const useURL: useURLInterface = () => {
+    const dispatch = useDispatch();
     const urlRedux = useAppSelector((state) => state.PlanReducer.url);
+    const setURLRedux = (destinationStr: string | null): void => {
+        dispatch(writeUrl(destinationStr));
+    };
     const isUrlReduxExist = urlRedux !== null;
-    return { urlRedux, isUrlReduxExist };
+    return { urlRedux, isUrlReduxExist, setURLRedux };
 };
 
 export const useDate: useDateInterface = () => {

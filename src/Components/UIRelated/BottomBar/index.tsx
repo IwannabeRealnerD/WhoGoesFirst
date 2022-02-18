@@ -13,7 +13,7 @@ export const BottomBar: FunctionComponent = () => {
     };
 
     return (
-        <div className="fixed w-full h-10 bottom-0 shadow-md px-3 z-10 flex items-center justify-center border-t-2 border-gray-300">
+        <div className="fixed w-full h-10 bottom-0 shadow-md px-3 flex items-center justify-center border-t-2 border-gray-300">
             <button
                 type="button"
                 className="hover-hover:hover:bg-white transition duration-100 hover-hover:active:bg-gray-400 active:bg-gray-400 rounded-full p-1 px-5 mr-16"
