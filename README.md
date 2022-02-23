@@ -6,8 +6,7 @@
         <a href="https://iwannaberealnerd.github.io/WhoGoesFirst/">배포 링크</a>
 </div>
 
----
-##TL;DR
+## TL;DR
 라이딩 투어 계획을 쉽게 작성하고 공유할 수 있는 웹서비스 입니다 :)
 
 ### 프로젝트 설명
