@@ -1,4 +1,4 @@
-
+> **Note:** This project has been archived and is no longer maintained.
 <div align="center">
 <img src="public/favicon-96x96.png">
     <h1>Who Goes First?</h1>
